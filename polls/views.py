@@ -6,7 +6,7 @@ from .models import Question, Choice
 
 
 def index(request):
-    latest_questions = Question.objects.order_by('-pub_date')[:5]
+    latest_questions = Question.objects.order_by('-pub_date')
     context = {
         'latest_questions': latest_questions
     }
