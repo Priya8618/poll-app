@@ -5,13 +5,15 @@ from django.urls import reverse
 from .models import Question, Choice
 
 
+from .models import Question
+from django.shortcuts import render
+
 def index(request):
-    latest_questions = Question.objects.order_by('-pub_date')[:10]
+    latest_question_list = Question.objects.order_by('-pub_date')
     context = {
-        'latest_questions': latest_questions
+        'latest_question_list': latest_question_list
     }
     return render(request, 'polls/index.html', context)
-
 
 def detail(request, question_id):
     question = get_object_or_404(Question, pk=question_id)
